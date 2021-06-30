@@ -15,10 +15,23 @@ class DoublyLinkedList {
   }
 
   addToHead(val) {
-    doublyLinkedList = new DoublyLinkedList();
-    doublyLinkedList.addToHead(val);
-    // doublyLinkedList.next = this.head;
-    // this.head = doublyLinkedList;
+    const newNode = new DoublyLinkedListNode(val);
+
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.head.prev = newNode;
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+
+    // let current = this.tail;
+    // while (current.next) {
+    //   current = current.next;
+    // }
+    // current.next = newNode;
   }
 
   addToTail(val) {
